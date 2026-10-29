@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover farms and manage farm-sharing schedules.">
+  <title>Farm Share Schedule</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">FS</span>
+      <span>Farm Share <small>Schedule</small></span>
+    </a>
+    <span id="connection-status" class="status">Connecting...</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">GROW TOGETHER</p>
+        <h1>Share resources.<br>Grow opportunities.</h1>
+        <p class="hero-text">
+          Discover farms, explore available schedules, and connect
+          with your local farming community.
+        </p>
+      </div>
+      <div class="hero-stat">
+        <span>🌱</span>
+        <strong>Farm community</strong>
+        <small>One shared platform</small>
+      </div>
+    </section>
+
+    <div id="message" class="message" role="status" hidden></div>
+
+    <section id="auth-section" class="auth-grid">
+      <div class="panel">
+        <p class="eyebrow">GET STARTED</p>
+        <h2>Create an account</h2>
+        <p class="muted">Join the Farm Share Schedule community.</p>
+
+        <form id="signup-form">
+          <label for="signup-name">Full name</label>
+          <input id="signup-name" type="text" maxlength="100"
+                 placeholder="Enter your name" required>
+
+          <label for="signup-email">Email address</label>
+          <input id="signup-email" type="email"
+                 placeholder="you@example.com" required>
+
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password"
+                 minlength="8" autocomplete="new-password"
+                 placeholder="At least 8 characters" required>
+
+          <button type="submit" class="btn btn-primary">
+            Create account
+          </button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <p class="eyebrow">WELCOME BACK</p>
+        <h2>Sign in</h2>
+        <p class="muted">Access your Farm Share account.</p>
+
+        <form id="login-form">
+          <label for="login-email">Email address</label>
+          <input id="login-email" type="email"
+                 autocomplete="email" placeholder="you@example.com"
+                 required>
+
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password"
+                 autocomplete="current-password"
+                 placeholder="Your password" required>
+
+          <button type="submit" class="btn btn-dark">
+            Sign in
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="welcome-row">
+        <div>
+          <p class="eyebrow">YOUR DASHBOARD</p>
+          <h2>Welcome, <span id="user-name">Member</span></h2>
+          <p id="user-role" class="muted">Role: customer</p>
+        </div>
+        <button id="logout-btn" class="btn btn-outline" type="button">
+          Sign out
+        </button>
+      </div>
+
+      <div class="summary-grid">
+        <article class="summary-card">
+          <span class="summary-icon">🌾</span>
+          <p>Listed farms</p>
+          <strong id="farm-count">0</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-icon">📅</span>
+          <p>Upcoming schedules</p>
+          <strong id="schedule-count">0</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-icon">👤</span>
+          <p>Account type</p>
+          <strong id="role-summary">Customer</strong>
+        </article>
+      </div>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">DISCOVER</p>
+            <h2>Available farms</h2>
+          </div>
+          <button id="refresh-btn" class="btn btn-outline" type="button">
+            Refresh
+          </button>
+        </div>
+        <div id="farm-list" class="card-grid">
+          <p class="muted">Loading farms...</p>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">PLAN AHEAD</p>
+            <h2>Upcoming schedules</h2>
+          </div>
+        </div>
+        <div id="schedule-list" class="card-grid">
+          <p class="muted">Loading schedules...</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>Farm Share Schedule · Sharing resources, growing together.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
